@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIDI Button Config</title>
+</head>
+<body>
+    <h1>MIDI Button Configuration</h1>
+    <form method="POST" action="/update">
+        <label for="button">Select Button:</label>
+        <select name="button" id="button">
+            <option value="next">Next</option>
+            <option value="previous">Previous</option>
+            <option value="custom">Custom</option>
+        </select>
+        <br><br>
+        <label for="hex_value">Hexadecimal Value:</label>
+        <input type="text" name="hex_value" id="hex_value" placeholder="e.g., C0 01" required>
+        <br><br>
+        <button type="submit">Update</button>
+    </form>
+    <h2>Current Hex Values</h2>
+    <ul>
+        <li>Next: {{ hex_values.next }}</li>
+        <li>Previous: {{ hex_values.previous }}</li>
+        <li>Custom: {{ hex_values.custom }}</li>
+    </ul>
+    {% if message %}
+    <p>{{ message }}</p>
+    {% endif %}
+</body>
+</html>
